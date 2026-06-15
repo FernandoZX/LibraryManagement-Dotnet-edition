@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\LibraryManagement.Api\LibraryManagement.Api.csproj" />
+    <ProjectReference Include="..\..\src\LibraryManagement.Application\LibraryManagement.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

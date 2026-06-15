@@ -21,6 +21,9 @@ namespace LibraryManagement.Infrastructure
             services.Configure<JwtSettings>(config.GetSection(JwtSettings.SectionName));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBorrowingRepository, BorrowingRepository>();
+            services.AddScoped<IDashboardRepository, DashboardRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<IPasswordHasher, BcryptPasswordHasher>();
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();

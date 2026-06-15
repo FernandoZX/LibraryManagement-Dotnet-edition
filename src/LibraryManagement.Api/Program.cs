@@ -1,6 +1,7 @@
 using LibraryManagement.Api.Filters;
 using LibraryManagement.Api.Middleware;
 using LibraryManagement.Application;
+using LibraryManagement.Application.Books;
 using LibraryManagement.Application.Common.Ports;
 using LibraryManagement.Infrastructure;
 using LibraryManagement.Infrastructure.Persistence;
@@ -18,7 +19,10 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 // --- Controllers + validación + OpenAPI ---
-builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>());
+builder.Services
+    .AddControllers(options => options.Filters.Add<ValidationFilter>())
+    .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(
+        new System.Text.Json.Serialization.JsonStringEnumConverter()));
 builder.Services.AddScoped<ValidationFilter>();
 builder.Services.AddOpenApi();
 // --- Autenticación JWT ---

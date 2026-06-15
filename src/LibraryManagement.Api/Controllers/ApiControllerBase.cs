@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.Application.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LibraryManagement.Api.Controllers
 {
@@ -8,6 +9,7 @@ namespace LibraryManagement.Api.Controllers
     [ApiController]
     public class ApiControllerBase : ControllerBase
     {
+        protected Guid CurrentUserId => Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
         protected IActionResult HandleFailure(Error error) => error.Type switch
         {
             ErrorType.Validation => BadRequest(new { error.Message }),
