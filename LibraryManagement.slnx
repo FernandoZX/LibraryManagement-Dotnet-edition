@@ -1,14 +1,14 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="Domain/LibraryManagement.Domain.csproj" />
-    <Project Path="LibraryManagement.Api/LibraryManagement.Api.csproj" Id="445fc57e-99fe-4c79-b9e9-ab9133142259" />
-    <Project Path="LibraryManagement.Application/LibraryManagement.Application.csproj" />
-    <Project Path="LibraryManagement.Infrastructure/LibraryManagement.Infrastructure.csproj" Id="22980171-3f23-4d91-95c9-0f8e7cd962ce" />
+    <Project Path="src/LibraryManagement.Domain/LibraryManagement.Domain.csproj" />
+    <Project Path="src/LibraryManagement.Api/LibraryManagement.Api.csproj" Id="445fc57e-99fe-4c79-b9e9-ab9133142259" />
+    <Project Path="src/LibraryManagement.Application/LibraryManagement.Application.csproj" />
+    <Project Path="src/LibraryManagement.Infrastructure/LibraryManagement.Infrastructure.csproj" Id="22980171-3f23-4d91-95c9-0f8e7cd962ce" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="LibraryManagement.Api.IntegrationTests/LibraryManagement.Api.IntegrationTests.csproj" Id="97d28fcb-4ac1-43b2-bcd2-ab0f3087885d" />
-    <Project Path="LibraryManagement.Application.Tests/LibraryManagement.Application.Tests.csproj" Id="6ff3f576-7273-44f1-84ec-642b6f2a0769" />
-    <Project Path="LibraryManagement.Domain.Tests/LibraryManagement.Domain.Tests.csproj" Id="f793a77d-d69d-4cb4-a9bc-e6fbb861213c" />
-    <Project Path="LibraryManagement.Infrastructure.Tests/LibraryManagement.Infrastructure.Tests.csproj" Id="05ed6ca2-3304-4030-9364-e1624d7f9a67" />
+    <Project Path="tests/LibraryManagement.Api.IntegrationTests/LibraryManagement.Api.IntegrationTests.csproj" Id="97d28fcb-4ac1-43b2-bcd2-ab0f3087885d" />
+    <Project Path="tests/LibraryManagement.Application.Tests/LibraryManagement.Application.Tests.csproj" Id="6ff3f576-7273-44f1-84ec-642b6f2a0769" />
+    <Project Path="tests/LibraryManagement.Domain.Tests/LibraryManagement.Domain.Tests.csproj" Id="f793a77d-d69d-4cb4-a9bc-e6fbb861213c" />
+    <Project Path="tests/LibraryManagement.Infrastructure.Tests/LibraryManagement.Infrastructure.Tests.csproj" Id="05ed6ca2-3304-4030-9364-e1624d7f9a67" />
   </Folder>
 </Solution>

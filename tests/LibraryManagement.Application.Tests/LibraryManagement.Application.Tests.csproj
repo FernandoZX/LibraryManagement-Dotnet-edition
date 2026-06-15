@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibraryManagement.Application\LibraryManagement.Application.csproj" />
+    <ProjectReference Include="..\..\src\LibraryManagement.Application\LibraryManagement.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
