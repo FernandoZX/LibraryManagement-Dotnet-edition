@@ -19,8 +19,8 @@ namespace LibraryManagement.Domain.Borrowings
 
         public Borrowing(Guid bookId, Guid userId, DateTime borrowedAt)
         {
-            if ( bookId == Guid.Empty ) throw new DomainException("BookId is required.");
-            if ( userId == Guid.Empty ) throw new DomainException("UserId is required.");
+            if (bookId == Guid.Empty) throw new DomainException("BookId is required.");
+            if (userId == Guid.Empty) throw new DomainException("UserId is required.");
 
             BookId = bookId;
             UserId = userId;
@@ -34,7 +34,7 @@ namespace LibraryManagement.Domain.Borrowings
 
         public void MarkAsReturned(DateTime returnedAt)
         {
-            if ( IsReturned )
+            if (IsReturned)
                 throw new DomainException("This borrowing has already been returned.");
             ReturnedAt = returnedAt;
         }

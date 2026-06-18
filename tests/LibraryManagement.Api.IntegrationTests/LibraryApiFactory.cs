@@ -36,7 +36,7 @@ namespace LibraryManagement.Api.IntegrationTests
         public async Task InitializeAsync()
         {
             // Crea LibraryDb_Tests (si no existe) y aplica las migrations
-            using ( var scope = Services.CreateScope() )
+            using (var scope = Services.CreateScope())
             {
                 var ctx = scope.ServiceProvider.GetRequiredService<LibraryDbContext>();
                 await ctx.Database.MigrateAsync();

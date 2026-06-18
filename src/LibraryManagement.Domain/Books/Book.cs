@@ -18,10 +18,10 @@ namespace LibraryManagement.Domain.Books
 
         public Book(string title, string author, string genre, string isbn, int totalCopies)
         {
-            if ( string.IsNullOrWhiteSpace(title) ) throw new DomainException("Title is required.");
-            if ( string.IsNullOrWhiteSpace(author) ) throw new DomainException("Author is required.");
-            if ( string.IsNullOrWhiteSpace(isbn) ) throw new DomainException("ISBN is required.");
-            if ( totalCopies < 0 ) throw new DomainException("Total copies cannot be negative.");
+            if (string.IsNullOrWhiteSpace(title)) throw new DomainException("Title is required.");
+            if (string.IsNullOrWhiteSpace(author)) throw new DomainException("Author is required.");
+            if (string.IsNullOrWhiteSpace(isbn)) throw new DomainException("ISBN is required.");
+            if (totalCopies < 0) throw new DomainException("Total copies cannot be negative.");
 
             Title = title.Trim();
             Author = author.Trim();
@@ -35,24 +35,24 @@ namespace LibraryManagement.Domain.Books
 
         public void Borrow()
         {
-            if ( !IsAvailable )
+            if (!IsAvailable)
                 throw new DomainException("No copies available to borrow.");
             AvailableCopies--;
         }
 
         public void Return()
         {
-            if ( AvailableCopies >= TotalCopies )
+            if (AvailableCopies >= TotalCopies)
                 throw new DomainException("All copies are already in the library.");
             AvailableCopies++;
         }
 
         public void UpdateDetails(string title, string author, string genre, string isbn, int totalCopies)
         {
-            if ( string.IsNullOrWhiteSpace(title) ) throw new DomainException("Title is required.");
+            if (string.IsNullOrWhiteSpace(title)) throw new DomainException("Title is required.");
 
             var borrowed = TotalCopies - AvailableCopies;
-            if ( totalCopies < borrowed )
+            if (totalCopies < borrowed)
                 throw new DomainException("Total copies cannot be less than the copies currently borrowed.");
 
             Title = title.Trim();

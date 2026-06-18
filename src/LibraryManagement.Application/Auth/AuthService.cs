@@ -31,7 +31,7 @@ namespace LibraryManagement.Application.Auth
         {
             var email = request.Email.Trim().ToLowerInvariant();
 
-            if ( await _users.ExistsByEmailAsync(email, ct) )
+            if (await _users.ExistsByEmailAsync(email, ct))
                 return Result.Failure<AuthResponse>(Error.Conflict("Email is already registered."));
 
             var hash = _hasher.Hash(request.Password);
@@ -49,7 +49,7 @@ namespace LibraryManagement.Application.Auth
             var email = request.Email.Trim().ToLowerInvariant();
             var user = await _users.GetByEmailAsync(email, ct);
 
-            if ( user is null || !_hasher.Verify(request.Password, user.PasswordHash) )
+            if (user is null || !_hasher.Verify(request.Password, user.PasswordHash))
                 return Result.Failure<AuthResponse>(Error.Unauthorized("Invalid credentials."));
 
             var token = _tokens.GenerateToken(user);

@@ -14,14 +14,14 @@ namespace LibraryManagement.Infrastructure.Persistence.Seed
         {
             await db.Database.MigrateAsync(ct); // aplica migrations pendientes
 
-            if ( !await db.Users.AnyAsync(ct) )
+            if (!await db.Users.AnyAsync(ct))
             {
                 db.Users.AddRange(
                     new User("librarian@library.com", hasher.Hash("Password123!"), "Library Admin", UserRole.Librarian),
                     new User("member@library.com", hasher.Hash("Password123!"), "John Member", UserRole.Member));
             }
 
-            if ( !await db.Books.AnyAsync(ct) )
+            if (!await db.Books.AnyAsync(ct))
             {
                 db.Books.AddRange(
                     new Book("Clean Architecture", "Robert C. Martin", "Software", "9780134494166", 3),

@@ -30,13 +30,13 @@ namespace LibraryManagement.Application.Borrowings
         public async Task<Result<BorrowingDto>> BorrowAsync(Guid userId, BorrowBookRequest request, CancellationToken ct = default)
         {
             var book = await _books.GetByIdAsync(request.BookId, ct);
-            if ( book is null )
+            if (book is null)
                 return Result.Failure<BorrowingDto>(Error.NotFound("Book not found."));
 
-            if ( !book.IsAvailable )
+            if (!book.IsAvailable)
                 return Result.Failure<BorrowingDto>(Error.Conflict("No copies available to borrow."));
 
-            if ( await _borrowings.HasActiveBorrowingAsync(userId, book.Id, ct) )
+            if (await _borrowings.HasActiveBorrowingAsync(userId, book.Id, ct))
                 return Result.Failure<BorrowingDto>(Error.Conflict("You already have this book borrowed."));
 
             var now = _clock.GetUtcNow().UtcDateTime;
@@ -53,14 +53,14 @@ namespace LibraryManagement.Application.Borrowings
         public async Task<Result<BorrowingDto>> ReturnAsync(Guid borrowingId, CancellationToken ct = default)
         {
             var borrowing = await _borrowings.GetByIdAsync(borrowingId, ct);
-            if ( borrowing is null )
+            if (borrowing is null)
                 return Result.Failure<BorrowingDto>(Error.NotFound("Borrowing not found."));
 
-            if ( borrowing.IsReturned )
+            if (borrowing.IsReturned)
                 return Result.Failure<BorrowingDto>(Error.Conflict("This borrowing was already returned."));
 
             var book = await _books.GetByIdAsync(borrowing.BookId, ct);
-            if ( book is null )
+            if (book is null)
                 return Result.Failure<BorrowingDto>(Error.NotFound("Book not found."));
 
             var now = _clock.GetUtcNow().UtcDateTime;

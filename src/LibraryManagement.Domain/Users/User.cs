@@ -16,9 +16,9 @@ namespace LibraryManagement.Domain.Users
 
         public User(string email, string passwordHash, string fullName, UserRole role)
         {
-            if ( string.IsNullOrWhiteSpace(email) )
+            if (string.IsNullOrWhiteSpace(email))
                 throw new DomainException("Email is required.");
-            if ( string.IsNullOrWhiteSpace(passwordHash) )
+            if (string.IsNullOrWhiteSpace(passwordHash))
                 throw new DomainException("Password hash is required.");
 
             Email = email.Trim().ToLowerInvariant();

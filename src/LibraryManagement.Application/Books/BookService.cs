@@ -21,7 +21,7 @@ namespace LibraryManagement.Application.Books
 
         public async Task<Result<BookDto>> CreateAsync(CreateBookRequest request, CancellationToken ct = default)
         {
-            if ( await _books.ExistsByIsbnAsync(request.Isbn, ct) )
+            if (await _books.ExistsByIsbnAsync(request.Isbn, ct))
                 return Result.Failure<BookDto>(Error.Conflict("A book with this ISBN already exists."));
 
             var book = new Book(request.Title, request.Author, request.Genre, request.Isbn, request.TotalCopies);
@@ -34,13 +34,13 @@ namespace LibraryManagement.Application.Books
         public async Task<Result<BookDto>> UpdateAsync(Guid id, UpdateBookRequest request, CancellationToken ct = default)
         {
             var book = await _books.GetByIdAsync(id, ct);
-            
+
 
             var recordFound = RecordExtensions.EnsureFound(book, "Book");
-            if ( !recordFound.IsSuccess )
+            if (!recordFound.IsSuccess)
                 return Result.Failure<BookDto>(recordFound.Error);
 
-            if ( await _books.ExistsByIsbnAsync(request.Isbn, ct) )
+            if (await _books.ExistsByIsbnAsync(request.Isbn, ct))
                 return Result.Failure<BookDto>(Error.Conflict("A book with this ISBN already exists."));
 
 
@@ -54,7 +54,7 @@ namespace LibraryManagement.Application.Books
         {
             var book = await _books.GetByIdAsync(id, ct);
             var recordFound = RecordExtensions.EnsureFound(book, "Book");
-            if ( !recordFound.IsSuccess )
+            if (!recordFound.IsSuccess)
                 return Result.Failure(recordFound.Error);
 
             _books.Remove(book);

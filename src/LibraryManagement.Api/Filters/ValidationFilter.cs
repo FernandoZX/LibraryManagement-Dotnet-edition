@@ -11,14 +11,14 @@ namespace LibraryManagement.Api.Filters
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            foreach ( var arg in context.ActionArguments.Values )
+            foreach (var arg in context.ActionArguments.Values)
             {
-                if ( arg is null ) continue;
+                if (arg is null) continue;
                 var validatorType = typeof(IValidator<>).MakeGenericType(arg.GetType());
-                if ( _services.GetService(validatorType) is IValidator validator )
+                if (_services.GetService(validatorType) is IValidator validator)
                 {
                     var result = await validator.ValidateAsync(new ValidationContext<object>(arg));
-                    if ( !result.IsValid )
+                    if (!result.IsValid)
                     {
                         context.Result = new BadRequestObjectResult(new
                         {

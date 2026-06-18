@@ -21,12 +21,12 @@ namespace LibraryManagement.Api.Middleware
             {
                 await _next(context);
             }
-            catch ( DomainException ex )
+            catch (DomainException ex)
             {
                 _logger.LogWarning(ex, "Domain rule violated");
                 await WriteProblem(context, HttpStatusCode.Conflict, ex.Message);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Unhandled exception");
                 await WriteProblem(context, HttpStatusCode.InternalServerError, "An unexpected error occurred.");
@@ -35,9 +35,9 @@ namespace LibraryManagement.Api.Middleware
 
         private static Task WriteProblem(HttpContext context, HttpStatusCode status, string detail)
         {
-            context.Response.StatusCode = ( int ) status;
+            context.Response.StatusCode = (int)status;
             context.Response.ContentType = "application/problem+json";
-            return context.Response.WriteAsync(JsonSerializer.Serialize(new { status = ( int ) status, detail }));
+            return context.Response.WriteAsync(JsonSerializer.Serialize(new { status = (int)status, detail }));
         }
     }
 }

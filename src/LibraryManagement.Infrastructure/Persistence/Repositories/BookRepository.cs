@@ -23,11 +23,11 @@ namespace LibraryManagement.Infrastructure.Persistence.Repositories
         {
             var query = _db.Books.AsNoTracking().AsQueryable();
 
-            if ( !string.IsNullOrWhiteSpace(title) )
+            if (!string.IsNullOrWhiteSpace(title))
                 query = query.Where(b => b.Title.Contains(title));
-            if ( !string.IsNullOrWhiteSpace(author) )
+            if (!string.IsNullOrWhiteSpace(author))
                 query = query.Where(b => b.Author.Contains(author));
-            if ( !string.IsNullOrWhiteSpace(genre) )
+            if (!string.IsNullOrWhiteSpace(genre))
                 query = query.Where(b => b.Genre.Contains(genre));
 
             return await query.ToListAsync(ct);

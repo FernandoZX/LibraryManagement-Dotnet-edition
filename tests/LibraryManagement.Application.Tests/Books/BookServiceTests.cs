@@ -63,8 +63,8 @@ namespace LibraryManagement.Application.Tests.Books
         [Fact]
         public async Task Update_nonexistent_book_returns_not_found()
         {
-            _books.Setup(r => r.GetByIdAsync(It.IsAny<Guid>(), default)).ReturnsAsync(( Book? ) null);
-            
+            _books.Setup(r => r.GetByIdAsync(It.IsAny<Guid>(), default)).ReturnsAsync((Book?)null);
+
             var result = await CreateSut().UpdateAsync(Guid.NewGuid(), new UpdateBookRequest("T", "A", "G", "1", 3));
 
             result.IsSuccess.ShouldBeFalse();
@@ -89,7 +89,7 @@ namespace LibraryManagement.Application.Tests.Books
         [Fact]
         public async Task Delete_nonexistent_book_returns_not_found()
         {
-            _books.Setup(r => r.GetByIdAsync(It.IsAny<Guid>(), default)).ReturnsAsync(( Book? ) null);
+            _books.Setup(r => r.GetByIdAsync(It.IsAny<Guid>(), default)).ReturnsAsync((Book?)null);
 
             var result = await CreateSut().DeleteAsync(Guid.NewGuid());
 
